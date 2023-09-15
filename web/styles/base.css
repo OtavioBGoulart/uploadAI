@@ -9,4 +9,11 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #121214;
+  color: #ffffff;
+}
+
+body,
+button,
+input {
+  font-family: "Roboto", sans-serif;
 }
