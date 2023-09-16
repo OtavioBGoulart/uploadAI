@@ -10,19 +10,27 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/summary/:id", async (req, res) => {
-  console.log("oi");
-  await download(req.params.id);
-  console.log("passou");
-  const audioConverted = await convert();
-  console.log(audioConverted);
-  const result = await transcribe();
-  //console.log(result);
-  res.json({ result });
+  try {
+    console.log("oi");
+    await download(req.params.id);
+    console.log("passou");
+    const audioConverted = await convert();
+    console.log(audioConverted);
+    const result = await transcribe(audioConverted);
+    //console.log(result);
+    res.json({ result });
+  } catch (error) {
+    return res.json({ error });
+  }
 });
 
 app.post("/summary", async (req, res) => {
-  const result = await summarize(req.body.text);
-  return res.json({ result });
+  try {
+    const result = await summarize(req.body.text);
+    return res.json({ result });
+  } catch (error) {
+    return res.json({ error });
+  }
 });
 
 app.listen(4000, () => console.log("Server is running on port 4000"));
