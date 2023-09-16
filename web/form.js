@@ -5,6 +5,7 @@ const content = document.querySelector("#content");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  content.classList.add("placeholder");
   const videoURL = input.value;
   console.log("URL", videoURL);
 
@@ -28,4 +29,5 @@ form.addEventListener("submit", async (e) => {
   });
 
   content.textContent = summary.data.result;
+  content.classList.remove("placeholder");
 });
