@@ -11,11 +11,11 @@ app.use(cors());
 
 app.get("/summary/:id", async (req, res) => {
   try {
-    console.log("oi");
+    //console.log("oi");
     await download(req.params.id);
-    console.log("passou");
+    console.log("paz");
     const audioConverted = await convert();
-    console.log(audioConverted);
+    //console.log(audioConverted);
     const result = await transcribe(audioConverted);
     //console.log(result);
     res.json({ result });
